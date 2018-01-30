@@ -1,0 +1,8 @@
+subprojects {
+    group = "ru.gildor.databinding.nonnull"
+
+    repositories {
+        jcenter()
+        google()
+    }
+}
