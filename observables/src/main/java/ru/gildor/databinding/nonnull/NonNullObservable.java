@@ -23,7 +23,9 @@ public class NonNullObservable<T> extends ObservableField<T> {
     @NonNull
     public T get() {
         T value = super.get();
-        checkNotNull(value);
+        if (value == null) {
+            throw new IllegalStateException("Value of this field is null. Null safety is broken");
+        }
         return value;
     }
 

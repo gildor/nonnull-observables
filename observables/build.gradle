@@ -26,6 +26,8 @@ android {
 
 dependencies {
     api "com.android.databinding:library:$version"
+
+    testImplementation "junit:junit:4.12"
 }
 
 //apply from: "${rootProject.projectDir}/publish.gradle"
