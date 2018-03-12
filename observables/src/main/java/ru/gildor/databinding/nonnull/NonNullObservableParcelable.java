@@ -6,24 +6,24 @@ import android.support.annotation.NonNull;
 
 import static ru.gildor.databinding.nonnull.CheckUtils.checkNotNull;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class NonNullObservableParcelable<T extends Parcelable> extends ObservableParcelable<T> {
     public NonNullObservableParcelable(@NonNull T value) {
         super(value);
-        checkNotNull(value);
+        checkNotNull(value, "Default value of NonNullObservableParcelable must be non-null");
     }
 
     @Override
     @NonNull
     public T get() {
         T value = super.get();
-        checkNotNull(value);
+        checkNotNull(value, "Value of property " + this + " is null. Null safety is broken");
         return value;
     }
 
     @Override
     public void set(@NonNull T value) {
-        checkNotNull(value);
+        checkNotNull(value, "You cannot set null as value to NonNullObservableParcelable");
         super.set(value);
     }
 }

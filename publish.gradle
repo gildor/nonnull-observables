@@ -23,7 +23,7 @@ def pomConfig = {
     }
     scm {
         url repoWeb
-                connection "scm:git:${repoVcs}"
+        connection "scm:git:${repoVcs}"
         developerConnection "scm:git:${repoVcs}"
         tag releaseTag
     }
@@ -34,39 +34,40 @@ def pomConfig = {
     licenses {
         license {
             name licenseName
-                    url licenseUrl
+            url licenseUrl
         }
     }
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
-    from sourceSets.main.allSource
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+task javadocJar(type: Jar) {
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
 publishing {
     publications {
-        Publication(MavenPublication) {
-            from components.java
-                    artifact sourcesJar
-                    artifact javadocJar
-                    pom.withXml {
-                        def root = asNode()
-                        root.appendNode('name', project.name)
-                        root.appendNode('description', project.description)
-                        root.appendNode('url', repoWeb)
-                        root.children().last() + pomConfig
-                    }
+        mavenAar(MavenPublication) {
+//            from android
+            artifact sourcesJar
+            artifact javadocJar
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('name', project.name)
+                root.appendNode('description', project.description)
+                root.appendNode('url', repoWeb)
+                root.children().last() + pomConfig
+            }
         }
     }
 }
 
 bintray {
+    dryRun = true
     user = project.properties['bintray.user']
     key = project.properties['bintray.key']
     publications = ['Publication']

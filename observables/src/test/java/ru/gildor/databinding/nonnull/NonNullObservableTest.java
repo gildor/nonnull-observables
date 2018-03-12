@@ -29,7 +29,7 @@ public class NonNullObservableTest {
     }
 
     @SuppressWarnings("JavaReflectionMemberAccess")
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = NullPointerException.class)
     public void getNull() {
         setNullToFieldUsingReflections(field);
         field.get();

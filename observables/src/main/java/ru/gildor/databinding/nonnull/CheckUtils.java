@@ -10,4 +10,12 @@ class CheckUtils {
         }
         return value;
     }
+
+    static <T> T checkNotNull(@NonNull T value, String message) {
+        //noinspection ConstantConditions
+        if (value == null) {
+            throw new NullPointerException(message);
+        }
+        return value;
+    }
 }
