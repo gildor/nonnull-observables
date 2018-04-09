@@ -1,8 +1,6 @@
-apply plugin: 'maven-publish'
-apply plugin: 'com.jfrog.bintray'
-
 def githubUser = "gildor"
-def githubId = "$githubUser/nonnull-databinding"
+def githubId = "$githubUser/nonnull-observables"
+def projectTitle = "NonNullObservables"
 def repoWeb = "https://github.com/${githubId}"
 def repoVcs = "${repoWeb}.git"
 def issueTracker = "${repoWeb}/issues"
@@ -13,68 +11,58 @@ def licenseUrl = "http://www.apache.org/licenses/LICENSE-2.0.txt"
 def releaseTag = "v${project.version}"
 
 // Create the pom configuration:
-def pomConfig = {
-    developers {
-        developer {
-            name "Andrey Mischenko"
-            email "git@gildor.ru"
-            organizationUrl "https://github.com/$githubUser"
-        }
-    }
-    scm {
-        url repoWeb
-        connection "scm:git:${repoVcs}"
-        developerConnection "scm:git:${repoVcs}"
-        tag releaseTag
-    }
-    issueManagement {
-        system "GitHub Issues"
-        url issueTracker
-    }
-    licenses {
-        license {
-            name licenseName
-            url licenseUrl
-        }
-    }
-}
-
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
     classifier = 'sources'
+    from android.sourceSets.main.java.srcDirs
 }
 
-task javadocJar(type: Jar) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
+artifacts {
+    archives sourcesJar
 }
 
-publishing {
-    publications {
-        mavenAar(MavenPublication) {
-//            from android
-            artifact sourcesJar
-            artifact javadocJar
-            pom.withXml {
-                def root = asNode()
-                root.appendNode('name', project.name)
-                root.appendNode('description', project.description)
-                root.appendNode('url', repoWeb)
-                root.children().last() + pomConfig
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom.project {
+            name projectTitle
+            description project.description
+            url repoWeb
+            developers {
+                developer {
+                    name "Andrey Mischenko"
+                    email "git@gildor.ru"
+                    organizationUrl "https://github.com/$githubUser"
+                }
+            }
+            scm {
+                url repoWeb
+                connection "scm:git:${repoVcs}"
+                developerConnection "scm:git:${repoVcs}"
+                tag releaseTag
+            }
+            issueManagement {
+                system "GitHub Issues"
+                url issueTracker
+            }
+            licenses {
+                license {
+                    name licenseName
+                    url licenseUrl
+                }
             }
         }
     }
 }
 
+
 bintray {
-    dryRun = true
     user = project.properties['bintray.user']
     key = project.properties['bintray.key']
-    publications = ['Publication']
+    configurations = ['archives']
     publish = true
     pkg {
         repo = project.properties['bintray.repo'] ?: 'maven'
-        name = project.name
+        name = projectTitle
         desc = project.description
         githubRepo = githubId
         githubReleaseNotesFile = 'CHANGELOG.md'

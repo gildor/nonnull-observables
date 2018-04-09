@@ -1,9 +1,9 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 class CheckUtils {
-    static <T> T checkNotNull(@NonNull T value) {
+    static <T> T checkNotNull(@Nullable T value) {
         //noinspection ConstantConditions
         if (value == null) {
             throw new NullPointerException();
@@ -11,7 +11,7 @@ class CheckUtils {
         return value;
     }
 
-    static <T> T checkNotNull(@NonNull T value, String message) {
+    static <T> T checkNotNull(@Nullable T value, String message) {
         //noinspection ConstantConditions
         if (value == null) {
             throw new NullPointerException(message);

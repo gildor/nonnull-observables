@@ -12,6 +12,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "nonnull-databinding"
-
-include ":observables"
+rootProject.name = "nonnull-observables"

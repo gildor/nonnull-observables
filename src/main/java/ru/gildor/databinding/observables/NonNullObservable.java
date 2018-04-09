@@ -1,20 +1,20 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
 import android.databinding.Observable;
 import android.databinding.ObservableField;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
-import static ru.gildor.databinding.nonnull.CheckUtils.checkNotNull;
+import static ru.gildor.databinding.observables.CheckUtils.checkNotNull;
 
 @SuppressWarnings("WeakerAccess")
 public class NonNullObservable<T> extends ObservableField<T> {
     public NonNullObservable(@NonNull T value) {
         super(value);
         checkNotNull(value, "Default value of NonNullObservable must be non-null");
-
     }
 
-    public NonNullObservable(@NonNull T value, Observable... dependencies) {
+    public NonNullObservable(@NonNull T value, @Nullable Observable... dependencies) {
         super(dependencies);
         set(value);
     }

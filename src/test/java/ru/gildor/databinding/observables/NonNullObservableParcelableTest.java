@@ -1,4 +1,4 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -6,7 +6,7 @@ import android.os.Parcelable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static ru.gildor.databinding.nonnull.NonNullObservableTest.setNullToFieldUsingReflections;
+import static ru.gildor.databinding.observables.NonNullObservableTest.setNullToFieldUsingReflections;
 
 public class NonNullObservableParcelableTest {
 

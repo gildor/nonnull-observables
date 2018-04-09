@@ -1,9 +1,9 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ObservableCharSequence extends NonNullObservable<CharSequence> {
     public ObservableCharSequence() {
         super("");

@@ -1,8 +1,37 @@
-subprojects {
-    group = "ru.gildor.databinding.nonnull"
+plugins {
+    id("com.android.library") version "3.1.0"
+    id("com.jfrog.bintray") version "1.7.3"
+    id("com.github.dcendents.android-maven") version "2.1"
+}
 
-    repositories {
-        jcenter()
-        google()
+repositories {
+    google()
+    jcenter()
+}
+
+def androidPluginVersion = ANDROID_PLUGIN_VERSION
+
+group = "ru.gildor.databinding"
+version = "$androidPluginVersion-alpha"
+description = "Android DataBinding ObservableFields with non-nullable API"
+
+android {
+    buildToolsVersion = "27.0.3"
+    compileSdkVersion = 27
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+
+        versionCode = 1
+        versionName = project.version
     }
 }
+
+dependencies {
+    api "com.android.databinding:library:$androidPluginVersion"
+
+    testImplementation "junit:junit:4.12"
+}
+
+apply from: "${rootProject.projectDir}/publish.gradle"

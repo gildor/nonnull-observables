@@ -1,4 +1,4 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;

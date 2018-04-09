@@ -1,9 +1,9 @@
-package ru.gildor.databinding.nonnull;
+package ru.gildor.databinding.observables;
 
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "WeakerAccess"})
 public class ObservableString extends NonNullObservable<String> {
     public ObservableString() {
         super("");
