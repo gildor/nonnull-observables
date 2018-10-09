@@ -7,7 +7,13 @@ This small library provides non-null implementations of [ObservableField](https:
 Library available on [JCenter](https://bintray.com/gildor/maven/NonNullObservables):
 
 ```
-implementation("ru.gildor.databinding:nonnull-observables:3.1.0-alpha")
+implementation("ru.gildor.databinding:nonnull-observables:3.2.0")
+```
+
+if you use AndroidX version of data binding library:
+
+```
+implementation("ru.gildor.databinding:nonnull-observables:3.2.0-androidx")
 ```
 
 ## Rationale
