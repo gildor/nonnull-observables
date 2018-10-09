@@ -1,7 +1,7 @@
 package ru.gildor.databinding.observables;
 
-import android.databinding.ObservableBoolean;
-import android.databinding.ObservableInt;
+import androidx.databinding.ObservableBoolean;
+import androidx.databinding.ObservableInt;
 
 import org.junit.Assert;
 import org.junit.Test;

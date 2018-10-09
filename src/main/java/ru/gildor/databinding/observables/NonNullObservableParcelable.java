@@ -1,8 +1,8 @@
 package ru.gildor.databinding.observables;
 
-import android.databinding.ObservableParcelable;
+import androidx.databinding.ObservableParcelable;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import static ru.gildor.databinding.observables.CheckUtils.checkNotNull;
 

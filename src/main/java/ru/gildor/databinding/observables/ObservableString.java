@@ -1,7 +1,7 @@
 package ru.gildor.databinding.observables;
 
-import android.databinding.Observable;
-import android.support.annotation.NonNull;
+import androidx.databinding.Observable;
+import androidx.annotation.NonNull;
 
 @SuppressWarnings({"unused", "WeakerAccess"})
 public class ObservableString extends NonNullObservable<String> {
