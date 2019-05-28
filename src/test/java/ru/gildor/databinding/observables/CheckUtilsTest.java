@@ -10,7 +10,6 @@ public class CheckUtilsTest {
         Assert.assertEquals("not-null", CheckUtils.checkNotNull("not-null"));
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Test(expected = NullPointerException.class)
     public void nullException() {
         CheckUtils.checkNotNull(null);

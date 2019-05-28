@@ -1,6 +1,6 @@
 package ru.gildor.databinding.observables;
 
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 class CheckUtils {
     static <T> T checkNotNull(@Nullable T value) {

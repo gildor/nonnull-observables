@@ -12,7 +12,7 @@ def releaseTag = "v${project.version}"
 
 // Create the pom configuration:
 task sourcesJar(type: Jar) {
-    classifier = 'sources'
+    archiveClassifier = 'sources'
     from android.sourceSets.main.java.srcDirs
 }
 

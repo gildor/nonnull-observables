@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.library") version "3.2.0"
+    id("com.android.library") version "3.4.1"
     id("com.jfrog.bintray") version "1.8.4"
     id("com.github.dcendents.android-maven") version "2.1"
 }
@@ -29,7 +29,7 @@ android {
 }
 
 dependencies {
-    api "com.android.databinding:library:$androidPluginVersion"
+    api "androidx.databinding:databinding-runtime:$androidPluginVersion"
 
     testImplementation "junit:junit:4.12"
 }

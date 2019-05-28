@@ -1,12 +1,13 @@
 package ru.gildor.databinding.observables;
 
-import android.databinding.ObservableParcelable;
 import android.os.Parcelable;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.ObservableParcelable;
 
 import static ru.gildor.databinding.observables.CheckUtils.checkNotNull;
 
-@SuppressWarnings({"unused", "WeakerAccess"})
+@SuppressWarnings({"unused"})
 public class NonNullObservableParcelable<T extends Parcelable> extends ObservableParcelable<T> {
     public NonNullObservableParcelable(@NonNull T value) {
         super(value);

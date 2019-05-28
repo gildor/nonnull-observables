@@ -1,7 +1,7 @@
 package ru.gildor.databinding.observables;
 
-import android.databinding.ObservableField;
-import android.databinding.ObservableInt;
+import androidx.databinding.ObservableField;
+import androidx.databinding.ObservableInt;
 
 import org.junit.Test;
 
@@ -28,7 +28,6 @@ public class NonNullObservableTest {
         assertEquals(newValue, field.get());
     }
 
-    @SuppressWarnings("JavaReflectionMemberAccess")
     @Test(expected = NullPointerException.class)
     public void getNull() {
         setNullToFieldUsingReflections(field);
